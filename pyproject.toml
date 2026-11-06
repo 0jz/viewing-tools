@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "viewing-tools"
+version = "0.1.0"
+description = "Offline Windows document viewers (PPTX, CSV, ...) sharing one PySide6 core"
+requires-python = ">=3.11"
+dependencies = ["PySide6-Essentials>=6.7"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "pyinstaller>=6.11", "pillow>=10"]
+
+[tool.setuptools]
+packages = ["viewing_core", "apps", "apps.pptx", "apps.csv", "apps.csv.ui"]
+
+[tool.setuptools.package-dir]
+viewing_core = "core/viewing_core"
+apps = "apps"
+
+[tool.pytest.ini_options]
+pythonpath = ["core", "."]
+testpaths = ["apps", "core"]
